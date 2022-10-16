@@ -1,2 +1,6 @@
 import ButtonWithText from "./ButtonWithText.vue";
-export default [ButtonWithText];
+import ModalComponent from "./ModalComponent.vue";
+import FormComponent from "./FormComponent.vue";
+import BtnWithModal from "@/components/UI/BtnWithModal.vue";
+
+export default [ButtonWithText, ModalComponent, FormComponent, BtnWithModal];

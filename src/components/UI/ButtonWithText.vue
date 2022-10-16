@@ -14,11 +14,11 @@ export default {
 .btn {
   padding: 5px 10px;
   font-weight: 600;
-  background-color: coral;
+  background-color: rgba(255, 127, 80, 0.8);
   border-radius: 5px;
   border: none;
 }
 .btn:hover {
-  background-color: crimson;
+  background-color: rgba(220, 20, 60, 0.8);
 }
 </style>

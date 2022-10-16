@@ -10,10 +10,7 @@ export default {
 <template>
   <div>
     <h2>Отзыв</h2>
-    <ButtonWithText>Написать</ButtonWithText>
-    <p>Отзыв по книге</p>
-    <!-- <button @click="hideCompleted = !hideCompleted">
-    {{ hideCompleted ? "Show all" : "Hide completed" }}
-  </button> -->
+    <BtnWithModal />
+    <p contenteditable="true">Отзыв по книге</p>
   </div>
 </template>

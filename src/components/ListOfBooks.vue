@@ -1,13 +1,8 @@
 <script>
-//import IconDelete from "./icons/IconDelete.vue";
 let id = 0;
 export default {
   data() {
     return {
-      //addClass: "add-btn",
-      listClass: "list",
-      //delClass: "del-btn",
-      //hideClass: "hide-btn",
       text: "",
       newBook: "",
       hideCompleted: false,
@@ -44,12 +39,16 @@ export default {
         this.counter.count--;
       }
     },
+    getDataAboutBook(e) {
+      let obj = { id: e.currentTarget.dataset.id, title: e.target.innerText };
+      localStorage.setItem("numberOfBook", JSON.stringify(obj));
+    },
   },
 };
 </script>
 
 <template>
-  <div :class="listClass">
+  <div class="list">
     <h2>Список книг (прочитано: {{ counter.count }})</h2>
     <form @submit.prevent="addBook">
       <input v-model="newBook" />
@@ -57,9 +56,16 @@ export default {
     </form>
     <div class="wrap-ul">
       <ul>
-        <li v-for="book in filteredBooks" :key="book.id">
+        <li
+          v-for="book in filteredBooks"
+          :key="book.id"
+          :data-id="book.id"
+          @click="getDataAboutBook"
+        >
           <input type="checkbox" v-model="book.read" @change="increment" />
-          <span :class="{ read: book.read }">{{ book.text }}</span>
+          <RouterLink to="/about" :class="{ read: book.read }">{{
+            book.text
+          }}</RouterLink>
           <button @click="removeBook(book)" class="del-btn">
             <!-- <IconDelete /> -->
           </button>
@@ -75,23 +81,28 @@ export default {
 
 <style scoped>
 .list {
-  width: 100%;
-  height: 65vh;
-  padding: 15px;
-  border: 2px solid yellow;
+  height: 90vh;
+  /*padding: 15px;
+  border: 2px solid yellow; */
 }
 .del-btn {
   width: 11px;
   height: 9px;
+  margin-left: 15px;
   padding: 0;
   background: url("./../assets/delete.svg") no-repeat;
   background-position: bottom center;
   border: none;
   border-radius: 2px;
+
   /* box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.6); */
 }
+
+.del-btn:hover {
+  transform: scale(1.5);
+}
 .wrap-ul {
-  height: 55%;
+  margin-bottom: 50px;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: #d4aa70 #e4e4e4;
@@ -106,7 +117,7 @@ export default {
   width: 5px;
 }
 .wrap-ul::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+  background-image: linear-gradient(180deg, #fa8e14 0%, #708ad4 99%);
   box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
   border-radius: 100px;
 }
@@ -120,20 +131,34 @@ export default {
   scrollbar-color: #5749d2;
 }
 
+.wrap-ul li {
+  cursor: pointer;
+}
+
+.wrap-ul li:hover {
+  color: #fa8e14;
+}
+
+ul {
+  height: 100%;
+  margin-top: 20px;
+  padding: 0;
+}
+li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .hide-btn {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+  /* position: absolute;
+  left: 10px;
+  bottom: 10px; */
 }
 [type="checkbox"] {
   margin-right: 10px;
 }
 .read {
   text-decoration: line-through;
-}
-
-ul {
-  height: 100%;
-  margin: 10px;
 }
 </style>

@@ -3,6 +3,7 @@ export default {
   data() {
     return {};
   },
+  methods: {},
   components: {},
 };
 </script>
@@ -10,6 +11,7 @@ export default {
 <template>
   <div>
     <h2>Цитаты</h2>
-    <ButtonWithText>Написать</ButtonWithText>
+    <BtnWithModal />
+    <blockquote contenteditable="true"></blockquote>
   </div>
 </template>

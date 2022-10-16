@@ -4,6 +4,7 @@ import IconLogoLight from "./icons/IconLogoLight.vue";
 export default {
   data() {
     return {
+      message: "",
       titleClass: "title",
       headerClass: "header",
       headerHeightClass: "headerHeight",
@@ -20,7 +21,9 @@ export default {
   <div :class="headerHeightClass">
     <div :class="headerClass">
       <h1 :class="titleClass">{{ message }}</h1>
-      <IconLogoLight />
+      <RouterLink to="/">
+        <IconLogoLight />
+      </RouterLink>
       <Search />
     </div>
   </div>
