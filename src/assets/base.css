@@ -9,6 +9,7 @@
   --vt-c-black-mute: #282828;
 
   --vt-c-indigo: #2c3e50;
+  --vt-c-whiskey: #d4aa70;
 
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
   --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
@@ -19,6 +20,7 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  --vt-c-text-west-side: #fa8e14;
 }
 
 /* semantic color variables for this project */
@@ -74,10 +76,7 @@ body {
   color: var(--color-text);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
-  
-
 }
-
 
 /* @font-face {
   font-family: 'Roboto';
@@ -124,9 +123,10 @@ html {
   scroll-behavior: smooth;
 }
 
-a, button {
+a,
+button {
   cursor: pointer;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 a {
@@ -134,7 +134,11 @@ a {
   text-decoration: none;
 }
 
-p, h1, h2, h3, h4 {
+p,
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
   margin-bottom: 20px;
 }
@@ -142,5 +146,3 @@ p, h1, h2, h3, h4 {
 ul {
   list-style: none;
 }
-
-

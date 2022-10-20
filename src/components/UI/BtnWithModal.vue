@@ -1,5 +1,5 @@
 <template>
-  <ButtonWithText @click="showModal">Написать</ButtonWithText>
+  <ButtonWithText @click="showModal"> </ButtonWithText>
   <ModalComponent v-model:show="modalVisible">
     <FormComponent />
   </ModalComponent>

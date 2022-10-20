@@ -1,24 +1,38 @@
 <template>
   <div class="form-box">
     <form class="form" @submit.prevent>
-      <textarea :value="note" @input="inputNote"></textarea>
-      <ButtonWithText @click="createNote"> Сохранить </ButtonWithText>
+      <textarea v-model.lazy="$store.state.note"></textarea>
+      <ButtonWithText @click="$store.commit('addText')">
+        Сохранить
+      </ButtonWithText>
     </form>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations } from "vuex";
 export default {
   name: "FormComponent",
   data() {
     return {
-      note: "",
+      // note: "",
     };
   },
+  computed: {
+    ...mapState({
+      infoData: (state) => state.plot.infoData,
+    }),
+    ...mapGetters({}),
+  },
   methods: {
+    ...mapMutations({
+      createNote: "plot/createNote",
+    }),
     createNote() {
-      let obj = localStorage.numberOfBook;
-      localStorage.setItem("numberOfBook", JSON.stringify(obj.this.note));
+      // const newNote = {
+      //   id: Date.now(),
+      //   note: this.note,
+      // };
       //закрыть модальное окно еще
     },
     inputNote(e) {
@@ -45,6 +59,7 @@ export default {
 }
 textarea {
   width: 90%;
+  height: 186px;
   margin-bottom: 10%;
 }
 </style>

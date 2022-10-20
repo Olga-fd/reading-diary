@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import router from "@/router/index.js";
+import store from "./store";
 import App from "./App.vue";
 import components from "./components/UI";
 import "./assets/main.css";
@@ -9,4 +10,4 @@ components.forEach((component) => {
   app.component(component.name, component);
 });
 
-app.use(router).mount("#app");
+app.use(router).use(store).mount("#app");
