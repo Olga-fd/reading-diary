@@ -6,10 +6,12 @@ export default createStore({
   state: () => ({
     currentId: 0,
     currentText: "",
-    title: JSON.parse(localStorage.numberOfBook).title,
     typeOfModalText: "",
     infoData: [],
     note: "",
+    modalVisible: false,
+    loader: true,
+    section: "",
   }),
   getters: {},
   mutations: {
@@ -17,12 +19,25 @@ export default createStore({
       // state.infoData[state.currentId][state.typeOfModalText] =
       //   state.currentText;
       state.infoData.push({ id: Date.now(), plotText: state.note });
+      state.modalVisible = false;
     },
     addTypeModal(state) {
       state.typeOfModalText = "";
     },
+    updateNote(state, note) {
+      state.note = note;
+    },
+    updateSection(state, section) {
+      state.section = section;
+    },
   },
-  actions: {},
+  actions: {
+    showLoader(state) {
+      setTimeout(() => {
+        state.loader = false;
+      }, 1000);
+    },
+  },
   modules: {
     plot: plotModule,
     list: listModule,

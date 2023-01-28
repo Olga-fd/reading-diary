@@ -1,24 +1,29 @@
 <template>
-  <div class="flex-box">
-    <h1>{{ $store.state.title }}</h1>
-    <RouterLink to="/">
-      <button class="btnTransparent">Назад</button>
-    </RouterLink>
-  </div>
+  <div>
+    <div class="flex-box">
+      <h1>
+        {{ titleOfBook }}
+      </h1>
 
-  <div class="flex-container">
-    <Plot />
-    <ImageOfBook />
-    <Resume />
-    <Quotes />
+      <RouterLink to="/">
+        <button class="btnTransparent">Назад</button>
+      </RouterLink>
+    </div>
+    <div class="flex-container">
+      <Plot />
+      <ImageOfBook />
+      <Resume />
+      <Quotes />
+    </div>
   </div>
 </template>
 
 <script>
-import Plot from "@/components/PlotComponent.vue";
-import Quotes from "@/components/QuotesComponent.vue";
-import Resume from "@/components/ResumeComponent.vue";
-import ImageOfBook from "@/components/ImageOfBook.vue";
+import { mapState } from "vuex";
+import Plot from "@/modules/plot/PlotComponent.vue";
+import Quotes from "@/modules/quotes/QuotesComponent.vue";
+import Resume from "@/modules/resume/ResumeComponent.vue";
+import ImageOfBook from "@/modules/picture/ImageOfBook.vue";
 
 export default {
   components: {
@@ -26,6 +31,13 @@ export default {
     Quotes,
     Resume,
     ImageOfBook,
+  },
+  computed: {
+    ...mapState({
+      // books: (state) => state.list.books,
+      idOfBook: (state) => state.list.idOfBook,
+      titleOfBook: (state) => state.list.titleOfBook,
+    }),
   },
 };
 </script>
@@ -36,6 +48,7 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+
 .flex-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -43,6 +56,7 @@ export default {
   grid-gap: 10px;
   width: 100%;
 }
+
 .btnTransparent {
   padding: 5px 20px;
   background-color: transparent;

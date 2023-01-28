@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ListOfBooks from "@/components/ListOfBooks.vue";
+import ListOfBooks from "@/modules/list/ListOfBooks.vue";
 
 export default {
   components: { ListOfBooks },

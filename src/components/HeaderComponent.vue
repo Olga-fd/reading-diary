@@ -1,5 +1,5 @@
 <script>
-import Search from "./SearchComponent.vue";
+import Search from "../modules/search/SearchComponent.vue";
 import IconLogoLight from "./icons/IconLogoLight.vue";
 export default {
   data() {

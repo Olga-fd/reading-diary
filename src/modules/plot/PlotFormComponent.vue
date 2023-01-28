@@ -11,8 +11,9 @@
 
 <script>
 import { mapState, mapGetters, mapMutations } from "vuex";
+import axios from "axios";
 export default {
-  name: "FormComponent",
+  name: "PlotFormComponent",
   data() {
     return {
       props: {
@@ -40,6 +41,17 @@ export default {
       this.modalVisible = false;
       console.log(this.modalVisible);
     },
+
+    async savePlot() {
+      try {
+        const response = await axios.post(`/api/books/${this.idOfBook}`, {
+          plotText: "15445",
+        });
+        console.log(response);
+      } catch (err) {
+        alert(err);
+      }
+    },
   },
 };
 </script>
@@ -48,17 +60,20 @@ export default {
 .form-box {
   width: 95%;
 }
+
 .form {
   flex-flow: column;
   width: 100%;
   padding: 15px;
 }
+
 .form,
 .form-box {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 textarea {
   width: 90%;
   height: 186px;
