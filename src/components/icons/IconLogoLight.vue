@@ -18,3 +18,12 @@
     />
   </svg>
 </template>
+
+<style>
+@media (width < 720px) {
+  svg {
+    width: 80px;
+    height: 50px;
+  }
+}
+</style>

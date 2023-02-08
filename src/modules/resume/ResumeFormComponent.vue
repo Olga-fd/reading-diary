@@ -1,9 +1,18 @@
 <template>
   <div class="form-box">
     <form class="form" @submit.prevent>
-      <label>Введите текст сюжета</label>
-      <textarea ref="note" :value="selectedBook.plot"></textarea>
-      <ButtonWithText @click="savePlot(selectedBook.id)">
+      <label>Введите отзыв</label>
+      <textarea ref="note" :value="selectedBook.review"></textarea>
+      <div class="emoji-box">
+        <input type="button" value="😊" @click="setEmoji" />
+        <input type="button" value="❤️" @click="setEmoji" />
+        <input type="button" value="👍" @click="setEmoji" />
+        <input type="button" value="👎" @click="setEmoji" />
+        <input type="button" value="😴" @click="setEmoji" />
+        <input type="button" value="😑" @click="setEmoji" />
+        <input type="button" value="😢" @click="setEmoji" />
+      </div>
+      <ButtonWithText @click="saveResume(selectedBook.id)">
         Сохранить
       </ButtonWithText>
     </form>
@@ -13,11 +22,15 @@
 <script>
 import { mapState, mapMutations, mapActions } from "vuex";
 import axios from "axios";
+// import ButtonWithEmoji from "@/components/UI/ButtonWithEmoji.vue";
 
 export default {
-  name: "PlotFormComponent",
+  name: "ResumeFormComponent",
   data() {
     return {};
+  },
+  components: {
+    // ButtonWithEmoji,
   },
   computed: {
     ...mapState({
@@ -26,29 +39,24 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setPlotModalStatus: "setPlotModalStatus",
-      setSelectedBook: "list/setSelectedBook",
+      setResumeModalStatus: "setResumeModalStatus",
     }),
     ...mapActions({
       updateData: "list/updateData",
     }),
-
-    async savePlot(id) {
-      this.setPlotModalStatus();
+    async saveResume(id) {
+      this.setResumeModalStatus();
       await axios
         .patch(`http://localhost:3000/api/books/${id}`, {
-          plot: this.$refs.note.value,
+          review: this.$refs.note.value,
         })
-        .then(() => console.log(this.$refs.note))
+        .then(() => console.log(this.$refs.note.value))
         .catch((err) => console.log(err));
       this.updateData();
     },
-
-    // async updatePlot(id) {
-    //   await axios
-    //     .get(`http://localhost:3000/api/books/${id}`)
-    //     .then((res) => this.setSelectedBook(res.data));
-    // },
+    setEmoji(e) {
+      this.$refs.note.value = this.$refs.note.value + e.target.value;
+    },
   },
 };
 </script>
@@ -73,14 +81,17 @@ export default {
 
 label {
   padding-bottom: 10px;
-  font-size: 1.25rem;
+  font-size: 20px;
   color: #222;
+}
+
+.emoji-box {
+  margin-bottom: 10%;
 }
 
 textarea {
   width: 90%;
   height: 186px;
-  margin-bottom: 10%;
 }
 
 textarea::-webkit-scrollbar {

@@ -2,43 +2,26 @@
   <div class="form-box">
     <form class="form" @submit.prevent>
       <textarea :value="note" @input="updateNote"></textarea>
-      <ButtonWithText @click="$store.commit('addText')">
-        Сохранить
-      </ButtonWithText>
+      <ButtonWithText> Сохранить </ButtonWithText>
     </form>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 export default {
   name: "FormComponent",
   data() {
-    return {
-      props: {
-        modalVisible: false,
-      },
-    };
+    return {};
   },
-  computed: {
-    ...mapState({
-      infoData: (state) => state.infoData,
-      note: (state) => state.note,
-    }),
-    ...mapGetters({}),
-  },
+
   methods: {
     ...mapMutations({
-      createNote: "plot/createNote",
+      setModalStatus: "setModalStatus",
     }),
 
-    updateNote(e) {
-      this.$store.commit("updateNote", e.target.value);
-    },
-
     createNote() {
-      this.modalVisible = false;
-      console.log(this.modalVisible);
+      this.setModalStatus();
     },
   },
 };

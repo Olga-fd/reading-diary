@@ -1,51 +1,112 @@
 <template>
   <div>
     <div class="flex-box">
-      <h1>
-        {{ titleOfBook }}
-      </h1>
+      <div class="flex-box center">
+        <h1
+          :class="{ 'book-title': isEditable }"
+          ref="titleOfBook"
+          :contenteditable="isEditable"
+        >
+          {{ selectedBook.title }}
+        </h1>
+        <button
+          @click="editTitle(selectedBook.id)"
+          class="list__edit-btn"
+        ></button>
+      </div>
 
       <RouterLink to="/">
         <button class="btnTransparent">Назад</button>
       </RouterLink>
     </div>
-    <div class="flex-container">
-      <Plot />
-      <ImageOfBook />
-      <Resume />
-      <Quotes />
-    </div>
+
+    <swiper
+      :modules="modules"
+      :slides-per-view="1"
+      :space-between="50"
+      navigation
+      :pagination="{ clickable: true }"
+    >
+      <swiper-slide class="flex-box flex-padding">
+        <Plot />
+      </swiper-slide>
+      <swiper-slide class="flex-padding">
+        <Resume />
+      </swiper-slide>
+      <swiper-slide class="flex-padding">
+        <Quotes />
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import axios from "axios";
 import Plot from "@/modules/plot/PlotComponent.vue";
 import Quotes from "@/modules/quotes/QuotesComponent.vue";
 import Resume from "@/modules/resume/ResumeComponent.vue";
-import ImageOfBook from "@/modules/picture/ImageOfBook.vue";
+import { Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/bundle";
 
 export default {
+  data() {
+    return {
+      isEditable: false,
+    };
+  },
   components: {
     Plot,
     Quotes,
     Resume,
-    ImageOfBook,
+    Swiper,
+    SwiperSlide,
   },
   computed: {
     ...mapState({
-      // books: (state) => state.list.books,
-      idOfBook: (state) => state.list.idOfBook,
-      titleOfBook: (state) => state.list.titleOfBook,
+      selectedBook: (state) => state.list.selectedBook,
     }),
+  },
+  methods: {
+    async editTitle(id) {
+      this.isEditable = !this.isEditable;
+      await axios.patch(`http://localhost:3000/api/books/${id}`, {
+        title: this.$refs.titleOfBook.innerText,
+      });
+    },
+  },
+  setup() {
+    //  onSwiper = (swiper) => {
+    //  const console.log(swiper);
+    // };
+    // const onSlideChange = () => {
+    //   console.log("slide change");
+    // };
+    return {
+      // onSwiper,
+      // onSlideChange,
+      modules: [Navigation, Pagination],
+    };
   },
 };
 </script>
 
 <style scoped>
+h1 {
+  padding: 3px;
+}
 .flex-box {
   display: flex;
   justify-content: space-between;
+}
+
+.flex-padding {
+  padding: 1% 5%;
+}
+
+.center {
   align-items: center;
 }
 
@@ -55,6 +116,10 @@ export default {
   grid-template-rows: 1fr 1fr;
   grid-gap: 10px;
   width: 100%;
+}
+
+li {
+  display: inline-block;
 }
 
 .btnTransparent {
@@ -70,10 +135,38 @@ export default {
   color: #222;
 }
 
+.book-title {
+  outline: 1px solid var(--vt-c-text-west-side);
+}
+
+.list__edit-btn {
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+  padding: 0;
+  background: url("../assets/images/edit.svg") no-repeat;
+  background-position: bottom center;
+  border: none;
+  border-radius: 2px;
+}
+
 @media screen and (width < 720px) {
   .flex-container {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
   }
+
+  .list__edit-btn {
+    width: 11px;
+    background-position: center center;
+  }
+
+  .btnTransparent {
+    padding: 5px;
+  }
 }
 </style>
+
+//
+<!-- @swiper="onSwiper"
+  //@slideChange="onSlideChange" -->

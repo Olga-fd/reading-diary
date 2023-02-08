@@ -1,9 +1,12 @@
 <template>
   <div class="form-box">
     <form class="form" @submit.prevent>
-      <label>Введите текст сюжета</label>
-      <textarea ref="note" :value="selectedBook.plot"></textarea>
-      <ButtonWithText @click="savePlot(selectedBook.id)">
+      <label>Введите цитату</label>
+      <textarea
+        ref="note"
+        :value="selectedBook.quotes.length ? selectedBook.quotes[0].value : ''"
+      ></textarea>
+      <ButtonWithText @click="saveQuote(selectedBook.id)">
         Сохранить
       </ButtonWithText>
     </form>
@@ -11,11 +14,11 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from "vuex";
+import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 import axios from "axios";
 
 export default {
-  name: "PlotFormComponent",
+  name: "QuoteFormComponent",
   data() {
     return {};
   },
@@ -23,32 +26,32 @@ export default {
     ...mapState({
       selectedBook: (state) => state.list.selectedBook,
     }),
+    ...mapGetters({}),
   },
   methods: {
     ...mapMutations({
-      setPlotModalStatus: "setPlotModalStatus",
-      setSelectedBook: "list/setSelectedBook",
+      setQuoteModalStatus: "setQuoteModalStatus",
     }),
     ...mapActions({
       updateData: "list/updateData",
     }),
 
-    async savePlot(id) {
-      this.setPlotModalStatus();
+    async saveQuote(id) {
+      this.setQuoteModalStatus();
       await axios
         .patch(`http://localhost:3000/api/books/${id}`, {
-          plot: this.$refs.note.value,
+          quotes: [
+            ...arguments,
+            {
+              number: this.selectedBook.quotes.length + 1,
+              value: this.$refs.note.value,
+            },
+          ],
         })
-        .then(() => console.log(this.$refs.note))
+        .then(() => this.$emit("update", this.$refs.note.value))
         .catch((err) => console.log(err));
       this.updateData();
     },
-
-    // async updatePlot(id) {
-    //   await axios
-    //     .get(`http://localhost:3000/api/books/${id}`)
-    //     .then((res) => this.setSelectedBook(res.data));
-    // },
   },
 };
 </script>
@@ -73,7 +76,7 @@ export default {
 
 label {
   padding-bottom: 10px;
-  font-size: 1.25rem;
+  font-size: 20px;
   color: #222;
 }
 

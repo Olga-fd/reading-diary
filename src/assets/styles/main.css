@@ -1,8 +1,9 @@
 @import "./base.css";
 @import "./normalize.min.css";
 
-#app{
-  width: 1280px;
+#app {
+  width: 95vw;
+  max-width: 1280px;
   margin: 0 auto;
   font-weight: normal;
 }
@@ -10,6 +11,14 @@
 a {
   text-decoration: none;
   transition: 0.4s;
+}
+
+input {
+  border: none;
+}
+
+input:focus-visible {
+  outline: none;
 }
 
 @media (min-width: 1024px) {
@@ -23,4 +32,10 @@ a {
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   } */
+}
+
+@media (width < 720px) {
+  #app {
+    width: 98vw;
+  }
 }

@@ -24,7 +24,7 @@ export default {
       <RouterLink to="/">
         <IconLogoLight />
       </RouterLink>
-      <Search />
+      <Search v-if="$route.fullPath !== '/about'" />
     </div>
   </div>
 </template>
@@ -40,11 +40,24 @@ export default {
   padding: 20px 0;
 }
 .headerHeight {
-  width: 100%;
+  width: 100vw;
   height: 100px;
 }
 img {
   max-width: 140px;
   max-height: 40px;
+}
+
+@media (width < 720px) {
+  .header {
+    display: block;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .header div:last-child {
+    text-align: left;
+  }
 }
 </style>

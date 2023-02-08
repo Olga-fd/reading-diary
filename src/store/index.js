@@ -1,34 +1,27 @@
 import { createStore } from "vuex";
-import { plotModule } from "./plotModule";
 import { listModule } from "./listModule";
 
 export default createStore({
   state: () => ({
-    currentId: 0,
-    currentText: "",
-    typeOfModalText: "",
-    infoData: [],
-    note: "",
     modalVisible: false,
+    modalVisiblePlot: false,
+    modalVisibleResume: false,
+    modalVisibleQuote: false,
     loader: true,
-    section: "",
   }),
   getters: {},
   mutations: {
-    addText(state) {
-      // state.infoData[state.currentId][state.typeOfModalText] =
-      //   state.currentText;
-      state.infoData.push({ id: Date.now(), plotText: state.note });
-      state.modalVisible = false;
+    setModalStatus(state) {
+      state.modalVisible = !state.modalVisible;
     },
-    addTypeModal(state) {
-      state.typeOfModalText = "";
+    setPlotModalStatus(state) {
+      state.modalVisiblePlot = !state.modalVisiblePlot;
     },
-    updateNote(state, note) {
-      state.note = note;
+    setResumeModalStatus(state) {
+      state.modalVisibleResume = !state.modalVisibleResume;
     },
-    updateSection(state, section) {
-      state.section = section;
+    setQuoteModalStatus(state) {
+      state.modalVisibleQuote = !state.modalVisibleQuote;
     },
   },
   actions: {
@@ -39,7 +32,6 @@ export default createStore({
     },
   },
   modules: {
-    plot: plotModule,
     list: listModule,
   },
 });
