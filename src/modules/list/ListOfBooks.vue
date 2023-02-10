@@ -43,12 +43,13 @@
       {{ hideCompleted ? "Показать все" : "Спрятать прочитанные" }}
     </ButtonWithText>
   </div>
+  <ThemeComponent />
 </template>
 
 <script>
 import axios from "axios";
 import { mapState, mapMutations, mapGetters } from "vuex";
-
+import ThemeComponent from "@/components/ThemeComponent.vue";
 export default {
   data() {
     return {
@@ -58,7 +59,7 @@ export default {
       hideCompleted: false,
     };
   },
-  components: {},
+  components: { ThemeComponent },
   computed: {
     ...mapState({
       search: (state) => state.list.search,
@@ -183,11 +184,6 @@ export default {
 .list__btn::after {
   content: "Добавить";
   font-weight: 600;
-}
-.list__hide-btn {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
 }
 
 .list__del-btn {

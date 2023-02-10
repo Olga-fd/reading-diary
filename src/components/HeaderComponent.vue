@@ -1,6 +1,8 @@
 <script>
 import Search from "../modules/search/SearchComponent.vue";
+import IconLogoDark from "./icons/IconLogoDark.vue";
 import IconLogoLight from "./icons/IconLogoLight.vue";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -13,6 +15,12 @@ export default {
   components: {
     Search,
     IconLogoLight,
+    IconLogoDark,
+  },
+  computed: {
+    ...mapState({
+      theme: (state) => state.theme,
+    }),
   },
 };
 </script>
@@ -22,7 +30,8 @@ export default {
     <div :class="headerClass">
       <h1 :class="titleClass">{{ message }}</h1>
       <RouterLink to="/">
-        <IconLogoLight />
+        <IconLogoLight v-if="theme !== 'dark'" />
+        <IconLogoDark v-else />
       </RouterLink>
       <Search v-if="$route.fullPath !== '/about'" />
     </div>
@@ -40,7 +49,6 @@ export default {
   padding: 20px 0;
 }
 .headerHeight {
-  width: 100vw;
   height: 100px;
 }
 img {

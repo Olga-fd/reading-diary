@@ -1,5 +1,6 @@
 <template>
   <svg
+    class="logo-icon"
     xmlns="http://www.w3.org/2000/svg"
     width="146"
     height="57"
@@ -21,7 +22,7 @@
 
 <style>
 @media (width < 720px) {
-  svg {
+  .logo-icon {
     width: 80px;
     height: 50px;
   }

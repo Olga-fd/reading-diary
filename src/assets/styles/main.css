@@ -2,8 +2,9 @@
 @import "./normalize.min.css";
 
 #app {
-  width: 95vw;
-  max-width: 1280px;
+  /* width: 95vw;
+  max-width: 1280px; */
+  width: min(95vw, 1280px);
   margin: 0 auto;
   font-weight: normal;
 }

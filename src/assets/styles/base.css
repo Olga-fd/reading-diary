@@ -62,7 +62,6 @@
 }
 
 body {
-  /* width: 100vw; */
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
@@ -143,10 +142,6 @@ h4 {
   margin-bottom: 20px;
 }
 
-/* h2 {
-  display: inline-block;
-} */
-
 ul {
   list-style: none;
 }
@@ -158,6 +153,21 @@ ul {
 
 .swiper-pagination-bullet {
   background: var(--vt-c-text-west-side) !important;
+}
+
+.light-theme {
+  background: #fff;
+  color: #222222;
+}
+
+.light-theme input {
+  border: 1px solid #222;
+}
+
+.light-theme .btnTransparent {
+  border: 2px solid var(--vt-c-text-west-side);
+  color: #222;
+  font-weight: 600;
 }
 
 @media (width < 720px) {

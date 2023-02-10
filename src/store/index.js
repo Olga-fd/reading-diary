@@ -8,6 +8,7 @@ export default createStore({
     modalVisibleResume: false,
     modalVisibleQuote: false,
     loader: true,
+    theme: "dark",
   }),
   getters: {},
   mutations: {
@@ -22,6 +23,9 @@ export default createStore({
     },
     setQuoteModalStatus(state) {
       state.modalVisibleQuote = !state.modalVisibleQuote;
+    },
+    setTheme(state) {
+      state.theme = state.theme == "dark" ? "light" : "dark";
     },
   },
   actions: {

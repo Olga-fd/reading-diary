@@ -142,7 +142,7 @@ li {
 .list__edit-btn {
   width: 25px;
   height: 25px;
-  margin-left: 15px;
+  /* margin-left: 15px; */
   padding: 0;
   background: url("../assets/images/edit.svg") no-repeat;
   background-position: bottom center;

@@ -24,4 +24,9 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.general {
+  width: 100%;
+  height: 100%;
+}
+</style>
