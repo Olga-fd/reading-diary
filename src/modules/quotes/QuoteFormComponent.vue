@@ -2,10 +2,7 @@
   <div class="form-box">
     <form class="form" @submit.prevent>
       <label>Введите цитату</label>
-      <textarea
-        ref="note"
-        :value="selectedBook.quotes.length ? selectedBook.quotes[0].value : ''"
-      ></textarea>
+      <textarea ref="note"></textarea>
       <ButtonWithText @click="saveQuote(selectedBook.id)">
         Сохранить
       </ButtonWithText>
@@ -14,7 +11,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 import axios from "axios";
 
 export default {
@@ -26,7 +23,6 @@ export default {
     ...mapState({
       selectedBook: (state) => state.list.selectedBook,
     }),
-    ...mapGetters({}),
   },
   methods: {
     ...mapMutations({
@@ -41,9 +37,9 @@ export default {
       await axios
         .patch(`http://localhost:3000/api/books/${id}`, {
           quotes: [
-            ...arguments,
+            ...this.selectedBook.quotes,
             {
-              number: this.selectedBook.quotes.length + 1,
+              number: Date.now(),
               value: this.$refs.note.value,
             },
           ],
@@ -51,6 +47,7 @@ export default {
         .then(() => this.$emit("update", this.$refs.note.value))
         .catch((err) => console.log(err));
       this.updateData();
+      console.log(this.selectedBook.quotes);
     },
   },
 };

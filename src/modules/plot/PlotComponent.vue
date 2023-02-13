@@ -39,6 +39,7 @@ export default {
 }
 
 .plot-inner {
+  width: 95%;
   height: 78%;
   margin-bottom: 10px;
   overflow-y: scroll;
@@ -54,12 +55,17 @@ export default {
 }  */
 
 .plot-inner::-webkit-scrollbar-thumb {
-  background-color: rgb(23, 195, 14); /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
-  border: 1px solid orange; /* creates padding around scroll thumb */
+  background-image: linear-gradient(
+    180deg,
+    var(--vt-c-electric-violet) 0%,
+    #dae4ff 99%
+  );
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+  border-radius: 100px;
 }
 .desc {
   width: 100%;
+  padding: 5px;
 }
 
 @media (width < 720px) {

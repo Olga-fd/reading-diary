@@ -29,8 +29,23 @@ input:focus {
 }
 @media screen and (width < 720px) {
   input {
-    width: 20%;
+    width: 30%;
     font-size: 7px;
+  }
+
+  .light-theme input {
+    background: transparent;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+  }
+
+  .light-theme input:focus {
+    box-shadow: none;
+  }
+
+  .light-theme input::placeholder {
+    color: #fff;
   }
 }
 </style>

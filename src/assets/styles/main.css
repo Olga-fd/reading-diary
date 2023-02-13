@@ -2,24 +2,45 @@
 @import "./normalize.min.css";
 
 #app {
-  /* width: 95vw;
-  max-width: 1280px; */
+  width: 100%;
+}
+
+.fixed-container {
   width: min(95vw, 1280px);
   margin: 0 auto;
   font-weight: normal;
 }
 
-a {
-  text-decoration: none;
-  transition: 0.4s;
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--vt-c-cornflower-blue) !important;
 }
 
-input {
-  border: none;
+.swiper-pagination-bullet {
+  background: var(--vt-c-cornflower-blue) !important;
 }
 
-input:focus-visible {
-  outline: none;
+.light-theme {
+  color: #222222;
+}
+
+.light-theme input {
+  border: 1px solid #222;
+}
+
+.light-theme .btnTransparent {
+  border: 2px solid var(--vt-c-text-west-side);
+  color: #222;
+  font-weight: 600;
+}
+
+.light-theme .headerHeight,
+.light-theme footer {
+  background-color: var(--vt-c-cornflower-blue);
+}
+
+.light-theme main {
+  background-color: var(--vt-c-white-soft);
 }
 
 @media (min-width: 1024px) {
@@ -37,6 +58,11 @@ input:focus-visible {
 
 @media (width < 720px) {
   #app {
-    width: 98vw;
+    width: 100vw;
+  }
+  :root {
+    --swiper-navigation-size: 14px;
+    --swiper-pagination-bullet-width: 5px;
+    --swiper-pagination-bullet-size: 5px;
   }
 }

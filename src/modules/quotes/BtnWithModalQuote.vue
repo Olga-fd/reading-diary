@@ -3,8 +3,7 @@
     Добавить цитату
   </ButtonWithText>
   <ModalComponent v-model:show="modalVisible" v-if="modalVisibleQuote">
-    <QuoteFormComponent v-if="selectedBook.quotes" />
-    <!-- <FormComponent /> -->
+    <QuoteFormComponent />
   </ModalComponent>
 </template>
 

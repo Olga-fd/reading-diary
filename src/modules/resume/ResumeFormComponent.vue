@@ -22,16 +22,13 @@
 <script>
 import { mapState, mapMutations, mapActions } from "vuex";
 import axios from "axios";
-// import ButtonWithEmoji from "@/components/UI/ButtonWithEmoji.vue";
 
 export default {
   name: "ResumeFormComponent",
   data() {
     return {};
   },
-  components: {
-    // ButtonWithEmoji,
-  },
+  components: {},
   computed: {
     ...mapState({
       selectedBook: (state) => state.list.selectedBook,

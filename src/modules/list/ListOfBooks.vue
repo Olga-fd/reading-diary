@@ -12,7 +12,7 @@
         placeholder="Введите название новой книги"
       />
 
-      <ButtonWithText class="list__btn" @click="setNewBook"> </ButtonWithText>
+      <ButtonWithText class="list__btn" @click="setNewBook" />
     </form>
     <div class="list__wrap-ul">
       <ul>
@@ -43,13 +43,12 @@
       {{ hideCompleted ? "Показать все" : "Спрятать прочитанные" }}
     </ButtonWithText>
   </div>
-  <ThemeComponent />
 </template>
 
 <script>
 import axios from "axios";
 import { mapState, mapMutations, mapGetters } from "vuex";
-import ThemeComponent from "@/components/ThemeComponent.vue";
+
 export default {
   data() {
     return {
@@ -59,7 +58,6 @@ export default {
       hideCompleted: false,
     };
   },
-  components: { ThemeComponent },
   computed: {
     ...mapState({
       search: (state) => state.list.search,
@@ -155,19 +153,12 @@ export default {
 </script>
 
 <style scoped>
-.list {
-  height: 80vh;
-}
 .list__input {
   width: 50%;
   height: 30px;
   padding-left: 5px;
   border-radius: 5px;
 }
-
-/* .list__input::placeholder {
-  padding-left: 5px;
-} */
 
 .list__input:focus {
   box-shadow: inset 0 0 2px 2px rgba(220, 46, 46, 0.6);
@@ -222,22 +213,22 @@ export default {
   width: 5px;
 }
 
-.wrap-ul::-webkit-scrollbar-thumb {
+.list__wrap-ul::-webkit-scrollbar-thumb {
   background-image: linear-gradient(
     180deg,
-    var(--vt-c-text-west-side) 0%,
+    var(--vt-c-west-side) 0%,
     #708ad4 99%
   );
   box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
   border-radius: 100px;
 }
 
-.wrap-ul {
+.list__wrap-ul {
   scrollbar-color: var(--vt-c-whiskey) #e4e4e4;
   transition: scrollbar-color 0.3s ease-out;
 }
 
-.wrap-ul:hover {
+.list__wrap-ul:hover {
   scrollbar-color: #5749d2;
 }
 
@@ -246,7 +237,11 @@ export default {
 }
 
 .list__wrap-ul li:hover {
-  color: var(--vt-c-text-west-side);
+  color: var(--vt-c-west-side);
+}
+
+.list__wrap-ul li a {
+  font-weight: 600;
 }
 
 ul {
@@ -263,7 +258,7 @@ li {
 
 [type="checkbox"] {
   margin-right: 10px;
-  accent-color: var(--vt-c-text-west-side);
+  accent-color: #7814fa;
 }
 
 [type="checkbox"]:focus {
@@ -271,7 +266,7 @@ li {
 }
 
 .read {
-  color: rgba(220, 20, 60, 0.8);
+  color: var(--vt-c-cornflower-blue);
   text-shadow: 0px 0px 0.5px rgba(252, 252, 249, 0.956);
   /* text-decoration: line-through; */
 }

@@ -1,32 +1,37 @@
+<template>
+  <div class="container" :class="{ 'light-theme': switchTheme == 'light' }">
+    <HeaderComponent />
+    <main>
+      <RouterView />
+    </main>
+
+    <footer>
+      <div class="fixed-container">
+        <ThemeComponent />
+      </div>
+    </footer>
+  </div>
+</template>
+
 <script>
 import HeaderComponent from "@/components/HeaderComponent.vue";
+import { mapState } from "vuex";
+import ThemeComponent from "./components/ThemeComponent.vue";
 export default {
   data() {
     return {};
   },
-  components: { HeaderComponent },
-
-  // methods: {
-  //   increment() {
-  //     this.counter.count++;
-  //   },
-  //   toggle() {
-  //     this.awesome = !this.awesome;
-  //   },
-  // },
+  components: { HeaderComponent, ThemeComponent },
+  computed: {
+    ...mapState({
+      switchTheme: (state) => state.theme,
+    }),
+  },
 };
 </script>
 
-<template>
-  <HeaderComponent />
-  <div>
-    <RouterView> </RouterView>
-  </div>
-</template>
-
 <style scoped>
-.general {
-  width: 100%;
-  height: 100%;
+.container {
+  width: 100vw;
 }
 </style>

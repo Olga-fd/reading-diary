@@ -10,7 +10,6 @@ export const listModule = {
   mutations: {
     setSelectedBook(state, book) {
       state.selectedBook = book;
-      console.log(book);
     },
     search(state, word) {
       state.search = word;

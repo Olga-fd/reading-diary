@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fixed-container">
     <div class="flex-box">
       <div class="flex-box center">
         <h1
@@ -131,23 +131,30 @@ li {
 }
 
 .btnTransparent:hover {
-  background-color: var(--vt-c-text-west-side);
-  color: #222;
+  background-color: var(--vt-c-electric-violet);
+}
+
+.light-theme .btnTransparent {
+  border: 2px solid #222;
+}
+.light-theme .btnTransparent:hover {
+  border: 2px solid #fff;
+  background-color: var(--vt-c-electric-violet);
+  color: #fff;
 }
 
 .book-title {
-  outline: 1px solid var(--vt-c-text-west-side);
+  outline: 2px solid var(--vt-c-cornflower-blue);
 }
 
 .list__edit-btn {
   width: 25px;
   height: 25px;
-  /* margin-left: 15px; */
+  margin-left: 10px;
   padding: 0;
   background: url("../assets/images/edit.svg") no-repeat;
   background-position: bottom center;
   border: none;
-  border-radius: 2px;
 }
 
 @media screen and (width < 720px) {

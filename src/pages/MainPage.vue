@@ -1,5 +1,7 @@
 <template>
-  <ListOfBooks />
+  <div class="fixed-container">
+    <ListOfBooks />
+  </div>
 </template>
 
 <script>
