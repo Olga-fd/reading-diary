@@ -10,10 +10,6 @@
     />
     <img :src="imageSrc" />
   </div>
-
-  <!-- <button @click="hideCompleted = !hideCompleted">
-    {{ hideCompleted ? "Show all" : "Hide completed" }}
-  </button> -->
 </template>
 
 <script>
@@ -48,10 +44,6 @@ export default {
 #img {
   width: 25%;
   border: 2px solid yellow;
-  border-radius: 5px;
-  /* background: url("@/assets/images/book.svg") no-repeat; */
-
-  /* background: url("../../assets/images/pictures/ivanhoe.jpg"); */
 }
 
 img {

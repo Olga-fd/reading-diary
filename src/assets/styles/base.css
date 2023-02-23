@@ -169,6 +169,12 @@ footer {
   overflow: hidden;
 }
 
+footer .fixed-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (width < 720px) {
   body {
     font-size: 7px;

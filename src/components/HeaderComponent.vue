@@ -1,9 +1,8 @@
 <template>
   <header class="headerHeight">
     <div class="header fixed-container">
-      <h1 class="title">{{ message }}</h1>
+      <h1 class="title"></h1>
       <RouterLink to="/">
-        <!-- <IconLogoLight /> -->
         <IconLogoPic />
       </RouterLink>
       <Search v-if="$route.fullPath !== '/about'" />
@@ -13,21 +12,11 @@
 
 <script>
 import Search from "../modules/search/SearchComponent.vue";
-// import IconLogoLight from "./icons/IconLogoLight.vue";
 import IconLogoPic from "./icons/IconLogoPic.vue";
 import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      message: "",
-      // titleClass: "title",
-      // headerClass: "header",
-      // headerHeightClass: "headerHeight",
-    };
-  },
   components: {
     Search,
-    // IconLogoLight,
     IconLogoPic,
   },
   computed: {

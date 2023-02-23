@@ -43,12 +43,6 @@ export default {
         .catch((err) => console.log(err));
       this.updateData();
     },
-
-    // async updatePlot(id) {
-    //   await axios
-    //     .get(`http://localhost:3000/api/books/${id}`)
-    //     .then((res) => this.setSelectedBook(res.data));
-    // },
   },
 };
 </script>

@@ -2,7 +2,9 @@
   <div>
     <h2>Отзыв</h2>
     <BtnWithModalResume />
-    <p>{{ selectedBook.review }}</p>
+    <div class="inner">
+      <p>{{ selectedBook.review }}</p>
+    </div>
   </div>
 </template>
 
@@ -23,9 +25,4 @@ export default {
 };
 </script>
 
-<style scoped>
-/* p {
-  column-count: 2;
-  column-gap: 4%;
-} */
-</style>
+<style scoped></style>

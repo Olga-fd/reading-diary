@@ -11,8 +11,6 @@
   >
   <ModalComponent v-model:show="modalVisible" v-if="modalVisibleResume">
     <ResumeFormComponent />
-    <!-- <ResumeFormComponent v-if="selectedBook.review" />
-    <FormComponent v-else /> -->
   </ModalComponent>
 </template>
 

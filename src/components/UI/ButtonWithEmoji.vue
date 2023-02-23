@@ -1,5 +1,4 @@
 <template>
-  <!-- <button class="btn">😊</button> -->
   <div>
     <input type="button" value="😊" />
     <input type="button" value="❤️" />

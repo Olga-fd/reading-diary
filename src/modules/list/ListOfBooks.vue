@@ -268,7 +268,6 @@ li {
 .read {
   color: var(--vt-c-cornflower-blue);
   text-shadow: 0px 0px 0.5px rgba(252, 252, 249, 0.956);
-  /* text-decoration: line-through; */
 }
 
 @media screen and (width < 720px) {

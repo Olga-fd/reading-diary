@@ -11,8 +11,6 @@
   >
   <ModalComponent v-model:show="modalVisible" v-if="modalVisiblePlot">
     <PlotFormComponent />
-    <!-- <PlotFormComponent v-if="selectedBook.plot" />
-    <FormComponent v-else /> -->
   </ModalComponent>
 </template>
 

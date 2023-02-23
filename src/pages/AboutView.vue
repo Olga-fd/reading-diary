@@ -43,9 +43,9 @@
 <script>
 import { mapState } from "vuex";
 import axios from "axios";
-import Plot from "@/modules/plot/PlotComponent.vue";
-import Quotes from "@/modules/quotes/QuotesComponent.vue";
-import Resume from "@/modules/resume/ResumeComponent.vue";
+import Plot from "../modules/plot/PlotComponent.vue";
+import Quotes from "../modules/quotes/QuotesComponent.vue";
+import Resume from "../modules/resume/ResumeComponent.vue";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
@@ -78,15 +78,7 @@ export default {
     },
   },
   setup() {
-    //  onSwiper = (swiper) => {
-    //  const console.log(swiper);
-    // };
-    // const onSlideChange = () => {
-    //   console.log("slide change");
-    // };
     return {
-      // onSwiper,
-      // onSlideChange,
       modules: [Navigation, Pagination],
     };
   },
@@ -173,7 +165,3 @@ li {
   }
 }
 </style>
-
-//
-<!-- @swiper="onSwiper"
-  //@slideChange="onSlideChange" -->

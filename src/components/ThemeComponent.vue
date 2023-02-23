@@ -42,21 +42,12 @@
       ></path>
     </svg>
   </button>
-
-  <!-- <button @click="hideCompleted = !hideCompleted">
-    {{ hideCompleted ? "Show all" : "Hide completed" }}
-  </button> -->
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
 
 export default {
-  data() {
-    return {
-      // switchTheme: "dark",
-    };
-  },
   computed: {
     ...mapState({
       switchTheme: (state) => state.theme,
@@ -129,9 +120,4 @@ export default {
   right: 9px;
   position: absolute;
 }
-
-/* @media (width < 720px) {
-  .switch-btn {
-  }
-} */
 </style>
