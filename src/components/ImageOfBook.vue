@@ -9,6 +9,12 @@ export default {
 <template>
   <div id="img">
     <button class="btnImg" tooltip="Добавить картинку">+</button>
+    <!-- <input
+      type="file"
+      placeholder="+"
+      class="btnImg"
+      tooltip="Добавить картинку"
+    /> -->
   </div>
 
   <!-- <button @click="hideCompleted = !hideCompleted">
@@ -18,12 +24,6 @@ export default {
 
 <style scoped>
 #img {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 10;
-  width: 30%;
-  height: 30%;
   border: 2px solid yellow;
   border-radius: 5px;
   background: url("@/assets/book.svg") no-repeat;

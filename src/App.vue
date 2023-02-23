@@ -1,34 +1,51 @@
+<template>
+  <div class="container" :class="{ 'light-theme': switchTheme == 'light' }">
+    <HeaderComponent />
+    <main>
+      <RouterView />
+    </main>
+
+    <footer>
+      <div class="fixed-container">
+        <ThemeComponent />
+        <time>{{ setTime() }}</time>
+      </div>
+    </footer>
+  </div>
+</template>
+
 <script>
-import HeaderComponent from "@/components/HeaderComponent.vue";
+import HeaderComponent from "./components/HeaderComponent.vue";
+import { mapState } from "vuex";
+import ThemeComponent from "./components/ThemeComponent.vue";
 export default {
   data() {
-    return {
-      awesome: true,
-      hideCompleted: false,
-    };
+    return {};
   },
-  components: { HeaderComponent },
-
+  components: { HeaderComponent, ThemeComponent },
+  computed: {
+    ...mapState({
+      switchTheme: (state) => state.theme,
+    }),
+  },
   methods: {
-    increment() {
-      this.counter.count++;
-    },
-    toggle() {
-      this.awesome = !this.awesome;
+    setTime() {
+      setInterval(() => {
+        document.querySelector("time").innerHTML = new Date().toLocaleString();
+      }, 1000);
     },
   },
 };
 </script>
 
-<template>
-  <HeaderComponent />
-  <div>
-    <RouterView> </RouterView>
-  </div>
-</template>
+<style scoped>
+.container {
+  width: 100vw;
+}
 
-<style scoped></style>
-
-<!-- <button @click="toggle">toggle</button>
-  <h1 v-if="awesome">Vue is awesome!</h1>
-  <h1 v-else>Oh no 😢</h1> -->
+time {
+  display: inline-block;
+  margin-right: 0;
+  color: #fff;
+}
+</style>

@@ -1,12 +1,15 @@
 <template>
-  <div class="modal" v-if="show" @click="hideModal">
-    <div class="modal__content" @click.stop>
-      <slot></slot>
+  <teleport to="#portal-target">
+    <div class="modal" v-if="show" @click="hideModal">
+      <div class="modal__content" @click.stop>
+        <slot></slot>
+      </div>
     </div>
-  </div>
+  </teleport>
 </template>
 
 <script>
+// import { mapMutations } from "vuex";
 export default {
   name: "ModalComponent",
   props: {
@@ -15,9 +18,14 @@ export default {
       default: false,
     },
   },
+  computed: {},
   methods: {
+    // ...mapMutations({
+    //   setModalStatus: "setModalStatus",
+    // }),
     hideModal() {
       this.$emit("update:show", false);
+      // this.setModalStatus();
     },
   },
 };
