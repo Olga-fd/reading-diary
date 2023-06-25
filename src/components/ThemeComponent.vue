@@ -63,13 +63,13 @@ export default {
         ? this.setTheme("light")
         : this.setTheme("dark");
     },
-    changeTheme() {
-      if (this.switchTheme == "dark") {
-        document.body.classList.add("light-theme");
-      } else {
-        document.body.classList.remove("light-theme");
-      }
-    },
+    // changeTheme() {
+    //   if (this.switchTheme == "dark") {
+    //     document.body.classList.add("light-theme");
+    //   } else {
+    //     document.body.classList.remove("light-theme");
+    //   }
+    // },
   },
 };
 </script>

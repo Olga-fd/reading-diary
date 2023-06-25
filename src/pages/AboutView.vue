@@ -92,6 +92,7 @@ h1 {
 .flex-box {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .flex-padding {

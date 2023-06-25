@@ -24,7 +24,9 @@ import BtnWithModalQuote from "./BtnWithModalQuote.vue";
 import axios from "axios";
 export default {
   data() {
-    return {};
+    return {
+      quotesOfBook: [],
+    };
   },
   computed: {
     ...mapState({
@@ -40,14 +42,17 @@ export default {
         .patch(`http://localhost:3000/api/books/${this.selectedBook.id}`, {
           quotes: this.delQuote(num),
         })
-        .then(() => this.updateData())
+        .then(() => {
+          this.updateData();
+        })
         .catch((err) => console.log(err));
     },
     delQuote(num) {
-      let index = this.selectedBook.quotes.findIndex(
-        (quote) => quote.number == num
+      let arr = JSON.parse(JSON.stringify(this.selectedBook.quotes)).filter(
+        (quote) => quote.number !== num
       );
-      return this.selectedBook.quotes.splice(index, 1);
+
+      return arr;
     },
   },
   components: { BtnWithModalQuote },

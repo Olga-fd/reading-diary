@@ -54,6 +54,10 @@
   color: #222222;
 }
 
+.light-theme main {
+  background-color: var(--vt-c-white-soft);
+}
+
 .light-theme input {
   border: 1px solid #222;
 }
@@ -69,7 +73,7 @@
   background-color: var(--vt-c-cornflower-blue);
 }
 
-.light-theme main {
+.light-theme body {
   background-color: var(--vt-c-white-soft);
 }
 
@@ -102,5 +106,12 @@
 
   .inner::-webkit-scrollbar {
     width: 2px;
+  }
+}
+
+@media (width < 426px) {
+  footer {
+    display: flex;
+    height: 64px;
   }
 }
