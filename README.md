@@ -1,3 +1,8 @@
+## Для запуска приложения необходимо:
+
+1. Перед запуском убедитесь, что вы установили Node.js версии 12 или выше. Для запуска сервера перейдите в папку diary-backend и выполните команду node index. Для остановки нажмите сочетание клавиш CTRL+C.
+2. После запуска сервера запускаем index.html из папки /dist c помощью web-сервера. Если установлен VSCode, то можно с помощью LiveServer. Теперь приложение готово к использованию.
+
 ![2](https://user-images.githubusercontent.com/67797888/218331506-a08c487a-a229-4777-b5ce-19caf57b3bab.jpg)
 ![3](https://user-images.githubusercontent.com/67797888/218331508-02c01703-5c89-4c8d-b9cd-a19148e4e94d.jpg)
 ![4](https://user-images.githubusercontent.com/67797888/218331510-dd2af056-7ce9-4dea-85e6-b229c3e02ca6.jpg)
@@ -6,25 +11,3 @@
 ![1](https://user-images.githubusercontent.com/67797888/218331504-1261fa68-c8d1-4aa0-b3c1-bd5bb735d705.jpg)
 # vue
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
