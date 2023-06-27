@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// import { mapMutations } from "vuex";
 export default {
   name: "ModalComponent",
   props: {
@@ -20,12 +19,8 @@ export default {
   },
   computed: {},
   methods: {
-    // ...mapMutations({
-    //   setModalStatus: "setModalStatus",
-    // }),
     hideModal() {
       this.$emit("update:show", false);
-      // this.setModalStatus();
     },
   },
 };
@@ -53,5 +48,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (width < 768px) {
+  .modal__content {
+    width: 90vw;
+    height: 40vh;
+  }
 }
 </style>

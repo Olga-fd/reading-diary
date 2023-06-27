@@ -127,16 +127,14 @@ input:focus-visible {
 }
 
 main {
-  height: fit-content;
+  top: calc(100px + 5%);
+  min-height: fit-content;
+  height: 100vh;
   padding-top: 12px;
 }
 
 footer {
   position: fixed;
-}
-
-main {
-  top: calc(100px + 5%);
 }
 
 footer {

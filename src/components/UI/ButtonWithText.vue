@@ -17,7 +17,6 @@ export default {
   font-weight: 600;
   font-size: 1.25rem;
   background-color: rgb(104 80 255 / 80%);
-  /* background-color: rgba(255, 127, 80, 0.8); */
   border-radius: 5px;
   border: none;
   color: #e8ff4f;

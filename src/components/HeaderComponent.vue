@@ -57,12 +57,6 @@ img {
     padding: 0 0 10px 0;
     margin: 0 auto;
     text-align: center;
-
-    /* position: fixed;
-  left: 0;
-  bottom: 0; */
-    /* width: 100%;
-  height: 30px; */
   }
 
   .header div:last-child {

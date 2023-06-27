@@ -204,9 +204,6 @@ export default {
   scrollbar-color: var(--vt-c-whiskey) #e4e4e4;
   transition: scrollbar-color 0.3s ease-out;
   overflow-y: auto;
-
-  /* column-count: 2;
-  column-gap: 4%; */
 }
 
 .list__wrap-ul::-webkit-scrollbar-track {
