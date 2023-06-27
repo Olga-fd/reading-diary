@@ -67,7 +67,7 @@ export default {
 
 label {
   padding-bottom: 10px;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 0.5rem + 1.5vw, 1.25rem);
   color: #222;
 }
 

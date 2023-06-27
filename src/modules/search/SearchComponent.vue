@@ -29,8 +29,8 @@ input:focus {
 }
 @media screen and (width < 720px) {
   input {
-    width: 30%;
-    font-size: 7px;
+    width: 50%;
+    font-size: 12px;
   }
 
   .light-theme input {

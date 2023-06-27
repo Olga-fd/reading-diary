@@ -29,6 +29,7 @@
     width: 100px;
     height: 50px;
     padding-top: 15px;
+    margin-bottom: 10%;
   }
 }
 </style>

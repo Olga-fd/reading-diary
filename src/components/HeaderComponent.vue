@@ -40,7 +40,7 @@ export default {
 }
 .headerHeight {
   width: 100%;
-  max-height: 100px;
+  max-height: 120px;
 }
 
 .light-theme .headerHeight {

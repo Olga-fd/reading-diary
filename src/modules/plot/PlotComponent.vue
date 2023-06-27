@@ -34,14 +34,11 @@ export default {
 <style scoped>
 .plot {
   width: 100%;
-  padding: 15px 0 15px 15px;
 }
 
 .desc {
   width: 100%;
   padding: 5px;
-}
-
-@media (width < 720px) {
+  font-size: 16px;
 }
 </style>

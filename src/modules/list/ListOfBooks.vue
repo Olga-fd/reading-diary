@@ -38,6 +38,7 @@
 
     <ButtonWithText
       class="list__hide-btn"
+      :class="{ hidden: !this.books.length }"
       @click="setHideCompleted(!hideCompleted)"
     >
       {{ hideCompleted ? "Показать все" : "Спрятать прочитанные" }}
@@ -153,6 +154,9 @@ export default {
 </script>
 
 <style scoped>
+.list {
+  margin-bottom: 20px;
+}
 .list__input {
   width: 50%;
   height: 30px;
@@ -193,20 +197,17 @@ export default {
 }
 
 .list__wrap-ul {
-  width: 50%;
+  max-height: 59vh;
   margin-bottom: 50px;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: var(--vt-c-whiskey) #e4e4e4;
   transition: scrollbar-color 0.3s ease-out;
   overflow-y: auto;
-
-  /* column-count: 2;
-  column-gap: 4%; */
 }
 
 .list__wrap-ul::-webkit-scrollbar-track {
-  background-color: var(--vt-c-whiskey);
+  background-color: #fff;
 }
 
 .list__wrap-ul::-webkit-scrollbar {
@@ -216,8 +217,8 @@ export default {
 .list__wrap-ul::-webkit-scrollbar-thumb {
   background-image: linear-gradient(
     180deg,
-    var(--vt-c-west-side) 0%,
-    #708ad4 99%
+    var(--vt-c-electric-violet) 0%,
+    #12c5e9 99%
   );
   box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
   border-radius: 100px;
@@ -242,6 +243,10 @@ export default {
 
 .list__wrap-ul li a {
   font-weight: 600;
+}
+
+.list__hide-btn {
+  margin-bottom: calc(30px + 10%);
 }
 
 ul {
@@ -270,13 +275,23 @@ li {
   text-shadow: 0px 0px 0.5px rgba(252, 252, 249, 0.956);
 }
 
+.hidden {
+  display: none;
+}
+
 @media screen and (width < 720px) {
+  ul {
+    width: 100%;
+    height: 50vh;
+    overflow-y: scroll;
+  }
   .list {
     width: 100%;
+    padding: 10px;
   }
 
   .list__input {
-    width: 50%;
+    width: 93%;
     height: 20px;
   }
 
@@ -289,6 +304,7 @@ li {
     height: 20px;
     padding: 0 !important;
     margin-left: 5px;
+    line-height: 0;
   }
 
   .list__btn::after {
@@ -297,11 +313,16 @@ li {
     font-size: 16px;
   }
 
+  .list__wrap-ul {
+    width: 100%;
+  }
+
   .list__wrap-ul li {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
     font-size: 1.3em;
+    overflow-x: scroll;
   }
 }
 </style>
