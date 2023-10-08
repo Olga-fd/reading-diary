@@ -21,11 +21,12 @@
 2. После запуска сервера запускаем index.html из папки /dist c помощью web-сервера. Если установлен VSCode, то можно с помощью LiveServer. Теперь приложение готово к использованию.
 
 ### Скрины приложения
-
-![15](https://github.com/Olga-fd/reading-diary/assets/67797888/c7618856-c78a-450f-9b1e-1b868a213ec0)
-![14](https://github.com/Olga-fd/reading-diary/assets/67797888/5f057b56-245b-4100-bc46-9d5df8450bb3)
-![13](https://github.com/Olga-fd/reading-diary/assets/67797888/64601428-4063-4c43-87aa-9b09b1b9cd2d)
-![12](https://github.com/Olga-fd/reading-diary/assets/67797888/327cf8a1-0a5e-4a35-810f-eb7780d04b18)
 ![11](https://github.com/Olga-fd/reading-diary/assets/67797888/2e17b715-9332-4d8f-accb-35c144be5b99)
+![12](https://github.com/Olga-fd/reading-diary/assets/67797888/327cf8a1-0a5e-4a35-810f-eb7780d04b18)
+![13](https://github.com/Olga-fd/reading-diary/assets/67797888/64601428-4063-4c43-87aa-9b09b1b9cd2d)
+![14](https://github.com/Olga-fd/reading-diary/assets/67797888/5f057b56-245b-4100-bc46-9d5df8450bb3)
+![15](https://github.com/Olga-fd/reading-diary/assets/67797888/c7618856-c78a-450f-9b1e-1b868a213ec0)
+
+
 # vue
 
