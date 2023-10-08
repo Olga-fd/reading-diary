@@ -1,14 +1,21 @@
 <template>
   <teleport to="#portal-target">
-    <div class="modal" v-if="show" @click="hideModal">
-      <div class="modal__content" @click.stop>
-        <slot></slot>
+    <div class="modal" v-if="modalVisible" @click="hideModal">
+      <div class="modal__content" :class="{ 'light-theme': switchTheme == 'light' }" @click.stop>
+        <PlotFormComponent v-if="currentSlide === 'plot'" />
+        <ResumeFormComponent v-if="currentSlide === 'resume'" />
+        <QuoteFormComponent v-if="currentSlide === 'quote'" />
       </div>
     </div>
   </teleport>
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
+import PlotFormComponent from '../../modules/plot/PlotFormComponent.vue'
+import ResumeFormComponent from '../../modules/resume/ResumeFormComponent.vue'
+import QuoteFormComponent from '../../modules/quotes/QuoteFormComponent.vue'
+
 export default {
   name: "ModalComponent",
   props: {
@@ -17,10 +24,24 @@ export default {
       default: false,
     },
   },
-  computed: {},
+  components: { 
+    PlotFormComponent,
+    ResumeFormComponent,
+    QuoteFormComponent,
+  },
+  computed: {
+    ...mapState({
+      modalVisible: (state) => state.modalVisible,
+      switchTheme: (state) => state.theme,
+      currentSlide: (state) => state.currentSlide,
+    }),
+  },
   methods: {
+    ...mapMutations({
+      setModalStatus: "setModalStatus",
+    }),
     hideModal() {
-      this.$emit("update:show", false);
+      this.setModalStatus()
     },
   },
 };

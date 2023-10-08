@@ -1,7 +1,7 @@
 <template>
   <div class="form-box">
     <form class="form" @submit.prevent>
-      <label>Введите отзыв</label>
+      <label class="form__label">Введите отзыв</label>
       <textarea ref="note" :value="selectedBook.review"></textarea>
       <div class="emoji-box">
         <input type="button" value="😊" @click="setEmoji" />
@@ -36,20 +36,19 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setResumeModalStatus: "setResumeModalStatus",
+      setModalStatus: "setModalStatus",
     }),
     ...mapActions({
       updateData: "list/updateData",
     }),
     async saveResume(id) {
-      this.setResumeModalStatus();
       await axios
         .patch(`http://localhost:3000/api/books/${id}`, {
           review: this.$refs.note.value,
         })
-        .then(() => console.log(this.$refs.note.value))
-        .catch((err) => console.log(err));
+        .catch((err) => {throw new Error('Ошибка при сохранении отзыва о книге')});
       this.updateData();
+      this.setModalStatus();
     },
     setEmoji(e) {
       this.$refs.note.value = this.$refs.note.value + e.target.value;
@@ -59,45 +58,28 @@ export default {
 </script>
 
 <style scoped>
-.form-box {
-  width: 95%;
-}
-
-.form {
-  flex-flow: column;
-  width: 100%;
-  padding: 15px;
-}
-
-.form,
-.form-box {
+  textarea {
+    margin-bottom: 0;
+  }
+  .emoji-box {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-label {
-  padding-bottom: 10px;
-  font-size: 20px;
-  color: #222;
-}
-
-.emoji-box {
   margin-bottom: 10%;
 }
 
-textarea {
-  width: 90%;
-  height: 186px;
+input {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: #fff;
+  border-radius: 10px;
+  display: block;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.2s;
+  cursor: pointer;
 }
 
-textarea::-webkit-scrollbar {
-  width: 5px; /* width of the entire scrollbar */
-}
-
-textarea::-webkit-scrollbar-thumb {
-  background-color: rgb(119, 123, 119); /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
-  border: 1px solid rgb(23, 22, 20); /* creates padding around scroll thumb */
+input:hover {
+  transform: rotateX(38deg) translateY(7px);
 }
 </style>

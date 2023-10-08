@@ -6,43 +6,31 @@
   >
     Написать
   </ButtonWithText>
-  <ButtonWithText v-else @click="showModal" key="plot-edit"
-    >Редактировать</ButtonWithText
-  >
-  <ModalComponent v-model:show="modalVisible" v-if="modalVisiblePlot">
-    <PlotFormComponent />
-  </ModalComponent>
+  <ButtonWithText v-else @click="showModal" key="plot-edit">
+    Редактировать
+  </ButtonWithText>
+  <ModalComponent />
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import PlotFormComponent from "./PlotFormComponent.vue";
 
 export default {
   name: "BtnWithModalPlot",
-  data() {
-    return { modalVisible: false };
-  },
-
-  components: {
-    PlotFormComponent,
-  },
   computed: {
     ...mapState({
-      modalVisiblePlot: (state) => state.modalVisiblePlot,
       selectedBook: (state) => state.list.selectedBook,
     }),
   },
   methods: {
     ...mapMutations({
-      setPlotModalStatus: "setPlotModalStatus",
+      setModalStatus: "setModalStatus",
+      setCurrentSlide: "setCurrentSlide",
     }),
     showModal() {
-      this.setPlotModalStatus();
-      this.modalVisible = true;
+      this.setModalStatus();
+      this.setCurrentSlide('plot')
     },
   },
 };
 </script>
-
-<style scoped></style>

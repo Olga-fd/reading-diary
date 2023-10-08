@@ -2,39 +2,28 @@
   <ButtonWithText @click="showModal" key="quote-write">
     Добавить цитату
   </ButtonWithText>
-  <ModalComponent v-model:show="modalVisible" v-if="modalVisibleQuote">
-    <QuoteFormComponent />
-  </ModalComponent>
+  <ModalComponent />
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import QuoteFormComponent from "./QuoteFormComponent.vue";
+
 export default {
   name: "BtnWithModalQuote",
-  data() {
-    return {
-      modalVisible: false,
-    };
-  },
-
-  components: { QuoteFormComponent },
   computed: {
     ...mapState({
-      modalVisibleQuote: (state) => state.modalVisibleQuote,
       selectedBook: (state) => state.list.selectedBook,
     }),
   },
   methods: {
     ...mapMutations({
-      setQuoteModalStatus: "setQuoteModalStatus",
+      setModalStatus: "setModalStatus",
+      setCurrentSlide: "setCurrentSlide",
     }),
     showModal() {
-      this.setQuoteModalStatus();
-      this.modalVisible = true;
+      this.setModalStatus();
+      this.setCurrentSlide('quote')
     },
   },
 };
 </script>
-
-<style scoped></style>

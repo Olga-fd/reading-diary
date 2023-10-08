@@ -5,7 +5,7 @@
       <RouterLink to="/">
         <IconLogoPic />
       </RouterLink>
-      <Search v-if="$route.fullPath !== '/about'" />
+      <Search v-if="!$route.fullPath.startsWith('/about')" />
     </div>
   </header>
 </template>
@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .title {
   display: none;
   color: #c8e811;
@@ -40,7 +40,7 @@ export default {
 }
 .headerHeight {
   width: 100%;
-  max-height: 120px;
+  height: 120px;
 }
 
 .light-theme .headerHeight {

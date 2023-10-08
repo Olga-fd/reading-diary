@@ -25,9 +25,9 @@
           <input
             type="checkbox"
             v-model="book.read"
-            @change="increment(book.id)"
+            @change="increment(book.id, $event)"
           />
-          <RouterLink to="/about" :class="{ read: book.read }">
+          <RouterLink :to="`/about/${book.id}`" :class="{ 'read': book.read }">
             {{ book.title }}
           </RouterLink>
 
@@ -87,7 +87,7 @@ export default {
       setSelectedBook: "list/setSelectedBook",
     }),
 
-    increment(el, id) {
+    increment(id, el) {
       if (el.target.checked == true) {
         this.counter.count++;
         this.saveReadBooks(id);
@@ -107,7 +107,9 @@ export default {
           quotes: [],
         })
         .then(() => this.fetchBooks())
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          throw new Error('Ошибка при добавлении книги')
+        });
 
       this.newBook = "";
     },
@@ -116,14 +118,18 @@ export default {
       await axios
         .get("http://localhost:3000/api/books")
         .then((response) => (this.books = response.data))
-        .catch((error) => console.log(error));
+        .catch((err) => {
+          throw new Error('Ошибка при запросе списка книг с сервера')
+        });
     },
 
     async removeBook(id) {
       await axios
         .delete(`http://localhost:3000/api/books/${id}`)
         .then(() => this.fetchBooks())
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          throw new Error('Ошибка при удалении книги')
+        });
     },
 
     async saveReadBooks(id) {
@@ -131,7 +137,10 @@ export default {
         .patch(`http://localhost:3000/api/books/${id}`, {
           read: true,
         })
-        .catch((err) => console.log(err));
+        .then(() => this.fetchBooks())
+        .catch((err) => {
+          throw new Error('Ошибка при отметке о прочтении книги')
+        });
     },
 
     async delReadBooks(id) {
@@ -139,7 +148,10 @@ export default {
         .patch(`http://localhost:3000/api/books/${id}`, {
           read: false,
         })
-        .catch((err) => console.log(err));
+        .then(() => this.fetchBooks())
+        .catch((err) => {
+          throw new Error('Ошибка при отмене отметки о прочтении книги')
+        });
     },
 
     setHideCompleted() {
@@ -165,7 +177,7 @@ export default {
 }
 
 .list__input:focus {
-  box-shadow: inset 0 0 2px 2px rgba(220, 46, 46, 0.6);
+  box-shadow: inset 0 0 2px 2px #8256b599;
 }
 
 .list__input:focus-visible {
@@ -197,7 +209,7 @@ export default {
 }
 
 .list__wrap-ul {
-  max-height: 59vh;
+  max-height: 55vh;
   margin-bottom: 50px;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
@@ -237,7 +249,8 @@ export default {
   cursor: pointer;
 }
 
-.list__wrap-ul li:hover {
+.list__wrap-ul li:hover,
+.read:hover {
   color: var(--vt-c-west-side);
 }
 
@@ -246,7 +259,8 @@ export default {
 }
 
 .list__hide-btn {
-  margin-bottom: calc(30px + 10%);
+  margin-left: 0;
+  margin-bottom: 30px;
 }
 
 ul {
@@ -279,11 +293,10 @@ li {
   display: none;
 }
 
-@media screen and (width < 720px) {
+@media (width < 720px) {
   ul {
     width: 100%;
     height: 50vh;
-    overflow-y: scroll;
   }
   .list {
     width: 100%;
@@ -297,6 +310,7 @@ li {
 
   .form__list {
     display: flex;
+    align-items: center;
   }
 
   .list__btn {
@@ -311,6 +325,7 @@ li {
     content: "+";
     font-weight: 600;
     font-size: 16px;
+    vertical-align: middle;
   }
 
   .list__wrap-ul {
