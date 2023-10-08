@@ -15,9 +15,10 @@
 </template>
 
 <script>
-import HeaderComponent from "./components/HeaderComponent.vue";
 import { mapState } from "vuex";
+import HeaderComponent from "./components/HeaderComponent.vue";
 import ThemeComponent from "./components/ThemeComponent.vue";
+
 export default {
   data() {
     return {};

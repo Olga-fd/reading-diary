@@ -13,6 +13,7 @@
   --vt-c-gorse: #e8ff4f;
   --vt-c-electric-violet: #6850ff;
   --vt-c-cornflower-blue: #6065fb;
+  --vt-c-martinique: #37334D;
   --vt-c-west-side: #fa8e14;
 
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
@@ -107,7 +108,7 @@ h4 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: clamp(20px, 2.5vw, 2rem);
 }
 
 h2 {
@@ -128,16 +129,13 @@ input:focus-visible {
 
 main {
   top: calc(100px + 5%);
-  min-height: fit-content;
-  height: 100vh;
+  height: calc(100vh - 137px);
   padding-top: 12px;
 }
 
 footer {
   position: fixed;
-}
-
-footer {
+  display: flex;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -162,6 +160,7 @@ footer .fixed-container {
     display: block;
     overflow-x: scroll;
   }
+
   h2 {
     font-size: 1.5em;
   }

@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h2>Отзыв</h2>
-    <BtnWithModalResume />
+    <div class="flex-box">
+      <BtnWithModalResume />
+    </div>
     <div class="inner">
       <p>{{ selectedBook.review }}</p>
     </div>
@@ -24,5 +25,3 @@ export default {
   components: { BtnWithModalResume },
 };
 </script>
-
-<style scoped></style>

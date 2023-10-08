@@ -4,29 +4,28 @@ import { listModule } from "./listModule";
 export default createStore({
   state: () => ({
     modalVisible: false,
-    modalVisiblePlot: false,
-    modalVisibleResume: false,
-    modalVisibleQuote: false,
+    currentSlide: 'plot',
     loader: true,
     theme: "dark",
   }),
-  getters: {},
+  getters: {
+    getModalStatus: state => state.modalVisible
+  },
   mutations: {
     setModalStatus(state) {
       state.modalVisible = !state.modalVisible;
     },
-    setPlotModalStatus(state) {
-      state.modalVisiblePlot = !state.modalVisiblePlot;
-    },
-    setResumeModalStatus(state) {
-      state.modalVisibleResume = !state.modalVisibleResume;
-    },
-    setQuoteModalStatus(state) {
-      state.modalVisibleQuote = !state.modalVisibleQuote;
-    },
     setTheme(state) {
       state.theme = state.theme == "dark" ? "light" : "dark";
     },
+    setCurrentSlide(state, payload) {
+      const allowedStates = ['plot', 'quote', 'resume'];
+      if (allowedStates.includes(payload)) {
+        state.currentSlide = payload;
+      } else {
+        console.error('Недопустимое состояние слайда');
+      }
+    }
   },
   actions: {
     showLoader(state) {

@@ -1,12 +1,11 @@
 import axios from "axios";
+import { createStore } from './index.js'
 
 export const listModule = {
   state: () => ({
     selectedBook: "",
     search: "",
   }),
-  getters: {},
-
   mutations: {
     setSelectedBook(state, book) {
       state.selectedBook = book;
@@ -21,6 +20,9 @@ export const listModule = {
         .get(`http://localhost:3000/api/books/${state.selectedBook.id}`)
         .then((res) => commit("setSelectedBook", res.data));
     },
+  },
+  getters: {
+    getModalStatusFromCreateStore: () => createStore.getters.getModalStatus
   },
   namespaced: true,
 };

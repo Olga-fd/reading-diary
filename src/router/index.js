@@ -8,14 +8,14 @@ const routes = [
     component: MainPage,
   },
   {
-    path: "/about",
+    path: "/about/:id",
     component: AboutView,
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
   routes,
+  history: createWebHistory(process.env.BASE_URL),
 });
 
 export default router;
